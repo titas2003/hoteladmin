@@ -136,7 +136,7 @@ const InventoryManager = () => {
               </div>
 
               <div className="form-group" style={{ flex: '1', minWidth: '100px' }}>
-                <label className="form-label">Unit Cost ($)</label>
+                <label className="form-label">Unit Cost (₹)</label>
                 <input 
                   type="number" 
                   step="0.01" 
@@ -216,8 +216,8 @@ const InventoryManager = () => {
                         )}
                       </td>
                       <td>{item.safetyStockLevel} {item.unit}</td>
-                      <td>${item.unitCost}</td>
-                      <td>{item.supplier || 'N/A'}</td>
+                      <td>₹{item.unitCost}</td>
+                      <td>{typeof item.supplier === 'object' ? item.supplier?.name : item.supplier || 'N/A'}</td>
                       <td>
                         {isLow ? (
                           <span className="badge badge-danger" style={{ display: 'flex', gap: '4px', alignItems: 'center', width: 'fit-content' }}>

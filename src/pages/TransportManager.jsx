@@ -131,7 +131,7 @@ const TransportManager = () => {
               </div>
 
               <div className="form-group" style={{ flex: '1', minWidth: '100px' }}>
-                <label className="form-label">Price per Trip ($)</label>
+                <label className="form-label">Price per Trip (₹)</label>
                 <input 
                   type="number" 
                   className="form-input" 
@@ -238,7 +238,7 @@ const TransportManager = () => {
                       <td>
                         <span className="badge badge-info">{vehicle.offeredTo}</span>
                       </td>
-                      <td>{vehicle.pricePerTrip === 0 ? 'Complimentary' : `$${vehicle.pricePerTrip}`}</td>
+                      <td>{vehicle.pricePerTrip === 0 ? 'Complimentary' : `₹${vehicle.pricePerTrip}`}</td>
                       <td>
                         <div style={{ fontWeight: 600 }}>{vehicle.driverName}</div>
                         <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{vehicle.driverPhone || 'N/A'}</div>

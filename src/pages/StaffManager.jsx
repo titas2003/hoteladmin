@@ -126,7 +126,7 @@ const StaffManager = () => {
               </div>
 
               <div className="form-group" style={{ flex: '1', minWidth: '150px' }}>
-                <label className="form-label">Annual Salary ($)</label>
+                <label className="form-label">Annual Salary (₹)</label>
                 <input 
                   type="number" 
                   className="form-input" 
@@ -231,7 +231,7 @@ const StaffManager = () => {
                       <td>
                         {editingId === staffId ? (
                           <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                            <span style={{ color: 'var(--text-muted)' }}>$</span>
+                            <span style={{ color: 'var(--text-muted)' }}>₹</span>
                             <input 
                               type="number" 
                               className="form-input" 
@@ -243,7 +243,7 @@ const StaffManager = () => {
                           </div>
                         ) : (
                           <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                            <span style={{ fontWeight: 700 }}>${member.salary.toLocaleString()}</span>
+                            <span style={{ fontWeight: 700 }}>₹{member.salary.toLocaleString()}</span>
                             <button 
                               onClick={() => { setEditingId(staffId); setEditSalary(member.salary.toString()); setEditRole(member.role); }} 
                               style={{ background: 'transparent', border: 'none', color: 'var(--accent-secondary)', cursor: 'pointer' }}

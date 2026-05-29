@@ -8,7 +8,7 @@ import Header from '../components/Header';
 import StatCard from '../components/StatCard';
 import GlassContainer from '../components/GlassContainer';
 import { 
-  DollarSign, 
+  IndianRupee, 
   Bed, 
   Boxes, 
   Users, 
@@ -56,8 +56,8 @@ const Dashboard = () => {
       <div className="grid-4">
         <StatCard 
           title="Total Revenue" 
-          value={`$${totalRevenue}`} 
-          icon={DollarSign} 
+          value={`₹${totalRevenue}`} 
+          icon={IndianRupee} 
           color="#00e676" 
           trend="+12.4% from last week" 
           trendColor="var(--success)" 
@@ -120,7 +120,7 @@ const Dashboard = () => {
                             {booking.bookingStatus}
                           </span>
                         </td>
-                        <td style={{ fontWeight: 700 }}>${booking.totalAmount}</td>
+                        <td style={{ fontWeight: 700 }}>₹{booking.totalAmount}</td>
                       </tr>
                     );
                   })}

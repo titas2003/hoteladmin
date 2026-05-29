@@ -100,7 +100,7 @@ const BookingsManager = () => {
                         <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Out: {new Date(booking.checkOutDate).toLocaleDateString()}</div>
                       </td>
                       <td>
-                        <div style={{ fontWeight: 700 }}>${booking.totalAmount}</div>
+                        <div style={{ fontWeight: 700 }}>₹{booking.totalAmount}</div>
                       </td>
                       <td>
                         <span className={`badge ${

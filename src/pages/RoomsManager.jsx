@@ -106,7 +106,7 @@ const RoomsManager = () => {
               </div>
 
               <div className="form-group" style={{ flex: '1', minWidth: '150px' }}>
-                <label className="form-label">Price per Night ($)</label>
+                <label className="form-label">Price per Night (₹)</label>
                 <input 
                   type="number" 
                   className="form-input" 
@@ -161,7 +161,7 @@ const RoomsManager = () => {
                       <td>
                         {editingId === roomId ? (
                           <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                            <span style={{ color: 'var(--text-muted)' }}>$</span>
+                            <span style={{ color: 'var(--text-muted)' }}>₹</span>
                             <input 
                               type="number" 
                               className="form-input" 
@@ -173,7 +173,7 @@ const RoomsManager = () => {
                           </div>
                         ) : (
                           <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                            <span style={{ fontWeight: 700 }}>${room.pricePerNight}</span>
+                            <span style={{ fontWeight: 700 }}>₹{room.pricePerNight}</span>
                             <button onClick={() => startEdit(room)} style={{ background: 'transparent', border: 'none', color: 'var(--accent-secondary)', cursor: 'pointer' }}>
                               <Edit2 size={14} />
                             </button>
