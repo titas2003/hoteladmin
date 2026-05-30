@@ -5,7 +5,7 @@ export const fetchAdminRoomsThunk = createAsyncThunk(
   'rooms/fetchAdminRooms',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await fetch(`${API_URL}/rooms`);
+      const response = await fetch(`${API_URL}/rooms?all=true`);
       const data = await response.json();
       if (!response.ok) return rejectWithValue(data.error || 'Failed to fetch rooms');
       return data.data;
@@ -25,7 +25,7 @@ export const createAdminRoomThunk = createAsyncThunk(
         body: JSON.stringify(roomDetails)
       });
       const data = await response.json();
-      if (!response.ok) return rejectWithValue(data.message || 'Creation failed');
+      if (!response.ok) return rejectWithValue(data.error || data.message || 'Creation failed');
       return data.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -43,8 +43,25 @@ export const updateAdminRoomThunk = createAsyncThunk(
         body: JSON.stringify(updateData)
       });
       const data = await response.json();
-      if (!response.ok) return rejectWithValue(data.message || 'Update failed');
+      if (!response.ok) return rejectWithValue(data.error || data.message || 'Update failed');
       return data.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteAdminRoomThunk = createAsyncThunk(
+  'rooms/deleteAdminRoom',
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await fetch(`${API_URL}/rooms/${id}`, {
+        method: 'DELETE',
+        headers: getHeaders()
+      });
+      const data = await response.json();
+      if (!response.ok) return rejectWithValue(data.error || data.message || 'Deletion failed');
+      return id;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -98,6 +115,9 @@ const roomSlice = createSlice({
         if (idx !== -1) {
           state.list[idx] = action.payload;
         }
+      })
+      .addCase(deleteAdminRoomThunk.fulfilled, (state, action) => {
+        state.list = state.list.filter(r => (r._id || r.id) !== action.payload);
       });
   }
 });
